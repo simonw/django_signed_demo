@@ -1,0 +1,23 @@
+{% if user %}
+	<p><small>You are logged in as <strong>{{ user }}</strong></small></p>
+{% endif %}
+
+<h1>Django signed cookies demo</h1>
+
+<p>Your cookies:</p>
+<pre>{{ cookies }}</pre>
+
+<p>Use this form to "log in" with a signed cookie. Enter any username you 
+	like, then enter that username again as the password.</p>
+
+<form action="/login/" method="post">
+	<p><label>Username: <input type="text" name="username"></label></p>
+	<p><label>Password: <input type="text" name="password"></label></p>
+	<p><input type="submit" value="Login"></p>
+</form>
+
+<p><strong>Tamper with your 'user' cookie:</strong></p>
+<form action="/tamper/" method="post">
+	<p><label>user cookie: <input type="text" name="cookie" value="{{ user_cookie }}" size="80"></label></p>
+	<p><input type="submit" value="Set the cookie"></p>
+</form>
